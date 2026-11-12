@@ -7,24 +7,16 @@
   <style>
     :root {
       color-scheme: light;
-      --bg: #f4f1ea;
-      --ink: #18201f;
-      --muted: #66716e;
-      --faint: #8a938f;
-      --panel: rgba(255, 255, 255, 0.84);
-      --panel-solid: #fffdf8;
-      --line: rgba(24, 32, 31, 0.12);
-      --line-strong: rgba(24, 32, 31, 0.22);
-      --teal: #0f766e;
-      --brick: #a33f2f;
-      --gold: #b88a2f;
-      --charcoal: #22312f;
-      --shadow: 0 24px 70px rgba(28, 39, 36, 0.13);
-      --soft-shadow: 0 12px 30px rgba(28, 39, 36, 0.08);
+      --bg: #f7f8fa;
+      --ink: #24292c;
+      --muted: #657079;
+      --line: #e2e6e9;
+      --teal: #24735c;
     }
 
     * {
       box-sizing: border-box;
+      letter-spacing: 0;
     }
 
     html {
@@ -33,26 +25,16 @@
 
     body {
       margin: 0;
-      min-height: 100vh;
-      background:
-        linear-gradient(90deg, rgba(24, 32, 31, 0.045) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(24, 32, 31, 0.04) 1px, transparent 1px),
-        linear-gradient(180deg, #fbfaf7 0, var(--bg) 420px, #eee9df 100%),
-        var(--bg);
-      background-size: 38px 38px, 38px 38px, auto;
+      min-height: 100dvh;
+      background: linear-gradient(180deg, #fff 0, var(--bg) 440px);
       color: var(--ink);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+      font-family: "Noto Sans CJK SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      -webkit-font-smoothing: antialiased;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background:
-        linear-gradient(120deg, rgba(15, 118, 110, 0.08), transparent 34%),
-        linear-gradient(300deg, rgba(163, 63, 47, 0.07), transparent 38%);
-      mix-blend-mode: multiply;
+    :focus-visible {
+      outline: 2px solid var(--teal);
+      outline-offset: 4px;
     }
 
     a {
@@ -62,200 +44,187 @@
 
     .shell {
       position: relative;
-      width: min(1180px, calc(100% - 36px));
+      width: min(1100px, calc(100% - 64px));
       margin: 0 auto;
-      padding: 28px 0 46px;
+      padding: 48px 0 32px;
     }
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 330px;
-      gap: 18px;
-      min-height: 262px;
-      padding: 26px;
-      overflow: hidden;
-      background: linear-gradient(135deg, rgba(34, 49, 47, 0.98), rgba(33, 43, 39, 0.92));
-      color: #fffaf0;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 8px;
-      box-shadow: var(--shadow);
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: end;
+      gap: 28px;
+      padding: 0 0 32px;
+      border-bottom: 1px solid var(--line);
     }
 
     .hero-copy {
       display: grid;
-      align-content: space-between;
-      min-height: 210px;
+      min-width: 0;
     }
 
     .eyebrow {
-      display: inline-grid;
-      width: fit-content;
-      grid-auto-flow: column;
+      display: flex;
       align-items: center;
-      gap: 9px;
-      margin: 0 0 16px;
-      color: rgba(255, 250, 240, 0.72);
-      font-size: 13px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      gap: 10px;
+      margin: 0 0 20px;
+      color: var(--teal);
+      font-size: 12px;
+      font-weight: 600;
     }
 
     .eyebrow::before {
       content: "";
-      width: 34px;
-      height: 1px;
-      background: var(--gold);
+      width: 18px;
+      height: 3px;
+      background: var(--teal);
     }
 
     h1 {
       margin: 0;
-      max-width: 780px;
-      font-size: clamp(34px, 5vw, 62px);
-      line-height: 1.05;
-      font-weight: 850;
+      font-size: 36px;
+      line-height: 1.4;
+      font-weight: 700;
       letter-spacing: 0;
+      overflow-wrap: anywhere;
     }
 
     .subtitle {
-      max-width: 680px;
-      margin: 18px 0 0;
-      color: rgba(255, 250, 240, 0.76);
-      font-size: 16px;
-      line-height: 1.8;
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
     }
 
     .stats {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-      align-self: stretch;
+      grid-template-columns: auto auto;
+      gap: 28px;
     }
 
     .stat {
       display: grid;
       align-content: end;
-      min-height: 96px;
-      padding: 16px;
-      background: rgba(255, 250, 240, 0.09);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 8px;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(16px);
+      min-width: 0;
+      gap: 6px;
     }
 
     .stat strong {
       display: block;
-      color: #fffaf0;
-      font-size: 32px;
-      line-height: 1.2;
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.5;
+      font-variant-numeric: tabular-nums;
     }
 
     .stat span {
       display: block;
-      margin-top: 4px;
-      color: rgba(255, 250, 240, 0.66);
-      font-size: 13px;
+      color: var(--muted);
+      font-size: 12px;
     }
 
     .tools {
       position: sticky;
-      top: 12px;
+      top: 0;
       z-index: 5;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 168px;
+      grid-template-columns: minmax(0, 1fr) 150px;
       gap: 12px;
-      margin: 18px 0;
-      padding: 12px;
-      background: rgba(255, 253, 248, 0.78);
-      border: 1px solid rgba(24, 32, 31, 0.1);
-      border-radius: 8px;
-      box-shadow: var(--soft-shadow);
-      backdrop-filter: blur(18px);
+      margin: 0;
+      padding: 24px 0 18px;
+      background: rgba(247, 248, 250, 0.96);
+      backdrop-filter: blur(12px);
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+      min-width: 0;
+      color: var(--muted);
+      font-size: 12px;
     }
 
     .search {
       width: 100%;
-      height: 52px;
-      padding: 0 18px;
+      min-width: 0;
+      height: 46px;
+      padding: 0 14px;
       color: var(--ink);
-      background: rgba(255, 255, 255, 0.82);
-      border: 1px solid rgba(24, 32, 31, 0.14);
-      border-radius: 8px;
-      outline: none;
+      background: #fff;
+      border: 1px solid #d5dce0;
+      border-radius: 6px;
+      font-family: inherit;
       font-size: 16px;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86);
     }
 
     .search:focus {
-      border-color: rgba(15, 118, 110, 0.62);
-      box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.14);
+      border-color: var(--teal);
     }
 
     .sort {
-      height: 52px;
-      padding: 0 14px;
+      width: 100%;
+      height: 46px;
+      padding: 0 10px;
       color: var(--ink);
-      background: rgba(255, 255, 255, 0.82);
-      border: 1px solid rgba(24, 32, 31, 0.14);
-      border-radius: 8px;
-      font-size: 15px;
-      outline: none;
+      background: #fff;
+      border: 1px solid #d5dce0;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin: 12px 0 16px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: 17px;
+      font-weight: 600;
+    }
+
+    .result-count {
+      color: var(--muted);
+      font-size: 12px;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(286px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
     }
 
     .card {
       position: relative;
       display: grid;
       grid-template-rows: auto 1fr auto;
-      gap: 16px;
-      min-height: 184px;
-      padding: 18px;
-      overflow: hidden;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 253, 248, 0.9)),
-        var(--panel-solid);
-      border: 1px solid rgba(24, 32, 31, 0.12);
+      gap: 14px;
+      min-width: 0;
+      min-height: 174px;
+      padding: 22px 24px 18px;
+      background: #fff;
+      border: 1px solid var(--line);
       border-radius: 8px;
-      box-shadow: var(--soft-shadow);
-      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
-      animation: rise 420ms ease both;
-      animation-delay: calc(var(--index) * 22ms);
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
     }
 
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 0 0 auto;
-      height: 4px;
-      background: linear-gradient(90deg, var(--teal), var(--gold), var(--brick));
-      opacity: 0.78;
-    }
-
-    .card::after {
-      content: "OPEN";
-      position: absolute;
-      right: 14px;
-      bottom: 12px;
-      color: rgba(24, 32, 31, 0.18);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.14em;
+    .grid {
+      animation: rise 300ms ease both;
     }
 
     .card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(15, 118, 110, 0.46);
-      box-shadow: 0 26px 48px rgba(28, 39, 36, 0.14);
-      background: #fffdfa;
+      transform: translateY(-2px);
+      border-color: #9ab9ac;
+      box-shadow: 0 6px 18px rgba(36, 41, 44, 0.05);
     }
 
     .card:active {
-      transform: translateY(-2px) scale(0.99);
+      transform: scale(0.99);
     }
 
     .card-top {
@@ -267,9 +236,15 @@
 
     .card-title {
       margin: 0;
-      font-size: 18px;
-      line-height: 1.52;
-      font-weight: 760;
+      font-size: 17px;
+      line-height: 1.7;
+      font-weight: 600;
+      overflow-wrap: anywhere;
+      line-break: anywhere;
+    }
+
+    .card:hover .card-title {
+      color: var(--teal);
     }
 
     .meta {
@@ -278,54 +253,62 @@
       justify-content: space-between;
       gap: 12px;
       color: var(--muted);
-      font-size: 13px;
+      font-size: 12px;
     }
 
     .badge {
       flex: 0 0 auto;
-      min-width: 42px;
-      padding: 5px 9px;
-      color: #6c3f00;
-      background: #fff2d2;
-      border: 1px solid rgba(184, 138, 47, 0.26);
-      border-radius: 999px;
-      text-align: center;
+      color: #a05c4b;
+      font-size: 12px;
       font-variant-numeric: tabular-nums;
-      font-weight: 700;
+      font-weight: 500;
     }
 
     .date {
       display: inline-flex;
       align-items: center;
       min-width: 0;
-      color: var(--faint);
-      white-space: nowrap;
+      color: var(--muted);
+      font-size: 12px;
+      overflow-wrap: anywhere;
     }
 
-    .url {
-      overflow: hidden;
-      max-width: calc(100% - 46px);
+    .read-link {
       color: var(--teal);
-      font-size: 13px;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      font-size: 12px;
+      font-weight: 500;
     }
 
     .empty {
       display: none;
-      padding: 42px;
+      padding: 64px 20px;
       text-align: center;
       color: var(--muted);
-      background: rgba(255, 253, 248, 0.72);
-      border: 1px dashed rgba(24, 32, 31, 0.18);
-      border-radius: 8px;
-      box-shadow: var(--soft-shadow);
+      border-top: 1px solid var(--line);
+    }
+
+    .empty strong {
+      display: block;
+      color: var(--ink);
+      font-size: 18px;
+    }
+
+    .empty p {
+      margin: 10px 0 0;
+      font-size: 14px;
     }
 
     footer {
-      margin-top: 26px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
       color: var(--muted);
-      font-size: 13px;
+      font-size: 12px;
+      overflow-wrap: anywhere;
     }
 
     @keyframes rise {
@@ -344,47 +327,59 @@
         scroll-behavior: auto;
       }
 
-      .card {
+      .grid, .card {
         animation: none;
         transition: none;
       }
     }
 
-    @media (max-width: 720px) {
-      .shell {
-        width: min(100% - 22px, 1180px);
-        padding-top: 14px;
-      }
-
-      .hero,
-      .tools {
-        grid-template-columns: 1fr;
-      }
-
+    @media (max-width: 900px) {
       .hero {
-        min-height: 0;
-        padding: 20px;
-      }
-
-      .hero-copy {
-        min-height: 0;
+        grid-template-columns: 1fr;
+        gap: 22px;
       }
 
       .stats {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        justify-content: start;
+        gap: 36px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .shell {
+        width: calc(100% - 32px);
+        padding-top: 28px;
       }
 
-      .stat {
-        min-width: 0;
-        min-height: 86px;
+      h1 {
+        font-size: 28px;
+      }
+
+      .hero {
+        padding-bottom: 24px;
+      }
+
+      .eyebrow {
+        margin-bottom: 12px;
+      }
+
+      .stat strong {
+        font-size: 20px;
       }
 
       .tools {
-        top: 8px;
+        grid-template-columns: minmax(0, 1fr) 112px;
+        gap: 8px;
+        padding-top: 16px;
       }
 
       .grid {
         grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 18px;
+        min-height: 164px;
       }
     }
   </style>
@@ -394,40 +389,45 @@
     <header class="hero">
       <div class="hero-copy">
         <div>
-          <p class="eyebrow">Article Atlas</p>
+          <p class="eyebrow">数字李逍遥 / 文章档案</p>
           <h1>数字李逍遥的文章导航</h1>
-          <p class="subtitle">把分散的文章链接收束到一个清爽的入口，按时间回看，也能快速定位旧文。</p>
+          <p class="subtitle">思考、实践与记录，都在这里。</p>
         </div>
       </div>
       <div class="stats" aria-label="导航统计">
         <div class="stat">
-          <strong id="totalCount">231</strong>
-          <span>当前显示</span>
+          <strong>231</strong>
+          <span>收录文章</span>
         </div>
         <div class="stat">
           <strong>2026-11-10</strong>
-          <span>最近更新</span>
-        </div>
-        <div class="stat">
-          <strong>231</strong>
-          <span>全部收藏</span>
+          <span>最新发布</span>
         </div>
       </div>
     </header>
 
     <section class="tools" aria-label="筛选工具">
-      <input id="search" class="search" type="search" placeholder="搜索标题、日期或链接" autocomplete="off">
-      <select id="sort" class="sort" aria-label="排序">
-        <option value="newest">最新在前</option>
-        <option value="oldest">最早在前</option>
-        <option value="title">标题排序</option>
-      </select>
+      <label class="field" for="search">查找文章
+        <input id="search" class="search" type="search" placeholder="搜索文章" autocomplete="off">
+      </label>
+      <label class="field" for="sort">排列方式
+        <select id="sort" class="sort">
+          <option value="newest">最新在前</option>
+          <option value="oldest">最早在前</option>
+          <option value="title">标题排序</option>
+        </select>
+      </label>
     </section>
 
-    <section id="grid" class="grid" aria-live="polite"></section>
-    <div id="empty" class="empty">没有找到匹配的网址</div>
+    <div class="section-heading">
+      <h2 id="articlesHeading">全部文章</h2>
+      <span class="result-count" role="status">共 <span id="totalCount">231</span> 篇</span>
+    </div>
+    <section id="grid" class="grid" aria-labelledby="articlesHeading"></section>
+    <div id="empty" class="empty"><strong>没有找到相关文章</strong><p>暂无匹配结果</p></div>
+    <noscript><p>请启用 JavaScript 以查看文章目录。</p></noscript>
 
-    <footer>数据来源：微信公众号文章目录.xlsx</footer>
+    <footer><span>数字李逍遥 · 微信公众号</span><span>文章档案 / 共 231 篇</span></footer>
   </main>
 
   <script>
@@ -468,15 +468,17 @@
       });
 
       totalCount.textContent = filtered.length;
+      document.querySelector("#articlesHeading").textContent = keyword ? "搜索结果" : "全部文章";
       grid.innerHTML = getSorted(filtered).map((item, index) => `
-        <a class="card" style="--index: ${Math.min(index, 24)}" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">
+        <a class="card" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">
           <div class="card-top">
-            <span class="badge">#${String(index + 1).padStart(2, "0")}</span>
-            <span class="date">${escapeHtml(item.publishedAt || "未标注时间")}</span>
+            <span class="badge">${String(index + 1).padStart(2, "0")}</span>
+            <span class="date">${escapeHtml(item.publishedAt.slice(0, 10) || "未标注时间")}</span>
           </div>
-          <p class="card-title">${escapeHtml(item.title)}</p>
+          <h3 class="card-title">${escapeHtml(item.title)}</h3>
           <div class="meta">
-            <span class="url">${escapeHtml(item.url)}</span>
+            <span>微信公众号</span>
+            <span class="read-link">阅读原文</span>
           </div>
         </a>
       `).join("");
